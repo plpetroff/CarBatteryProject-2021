@@ -27,7 +27,7 @@ namespace CarBatteries
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddDbContext<ApplicationDbContext>(options => options
+                .AddDbContext<CarBatteriesDbContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services
@@ -41,7 +41,7 @@ namespace CarBatteries
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                 })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<CarBatteriesDbContext>();
 
             services
                 .AddControllersWithViews();
