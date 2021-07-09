@@ -10,5 +10,6 @@
         public int Id { get; set; }
 
         public string Description { get; set; }
+        public IEnumerable<Battery> Batteries { get; init; } = new List<Battery>();
     }
 }

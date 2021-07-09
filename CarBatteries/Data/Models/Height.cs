@@ -9,5 +9,7 @@
     {
         public int Id { get; set; }
         public int ValueInMm { get; set; }
+
+        public IEnumerable<Battery> Batteries { get; init; } = new List<Battery>();
     }
 }

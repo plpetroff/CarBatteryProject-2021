@@ -10,5 +10,6 @@
         public int Id { get; set; }
 
         public double ValueInBGN { get; set; }
+        public IEnumerable<Battery> Batteries { get; init; } = new List<Battery>();
     }
 }

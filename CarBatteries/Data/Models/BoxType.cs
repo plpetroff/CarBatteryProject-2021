@@ -9,5 +9,6 @@
     {
         public int Id { get; set; }
         public string BoxTypeCode { get; set; }
+        public IEnumerable<Battery> Batteries { get; init; } = new List<Battery>();
     }
 }
