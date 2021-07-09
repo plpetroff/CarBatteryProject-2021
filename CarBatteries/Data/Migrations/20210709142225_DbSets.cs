@@ -217,85 +217,85 @@ namespace CarBatteries.Data.Migrations
                         column: x => x.AmperageId,
                         principalTable: "Amperages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_BatteryCodes_BatteryCodeId",
                         column: x => x.BatteryCodeId,
                         principalTable: "BatteryCodes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_BoxTypes_BoxTypeId",
                         column: x => x.BoxTypeId,
                         principalTable: "BoxTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Brands_BrandId",
                         column: x => x.BrandId,
                         principalTable: "Brands",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Capacities_CapacityId",
                         column: x => x.CapacityId,
                         principalTable: "Capacities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Heights_HeightId",
                         column: x => x.HeightId,
                         principalTable: "Heights",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_HeightsPluses_HeightPlusId",
                         column: x => x.HeightPlusId,
                         principalTable: "HeightsPluses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Lengths_LengthId",
                         column: x => x.LengthId,
                         principalTable: "Lengths",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Prices_PriceId",
                         column: x => x.PriceId,
                         principalTable: "Prices",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Technologies_TechnologyId",
                         column: x => x.TechnologyId,
                         principalTable: "Technologies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Terminals_TerminalsId",
                         column: x => x.TerminalsId,
                         principalTable: "Terminals",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Weights_WeightId",
                         column: x => x.WeightId,
                         principalTable: "Weights",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Batteries_Widths_WidthId",
                         column: x => x.WidthId,
                         principalTable: "Widths",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -306,7 +306,8 @@ namespace CarBatteries.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Batteries_BatteryCodeId",
                 table: "Batteries",
-                column: "BatteryCodeId");
+                column: "BatteryCodeId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Batteries_BoxTypeId",

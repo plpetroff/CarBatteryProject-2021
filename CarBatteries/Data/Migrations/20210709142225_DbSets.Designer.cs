@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarBatteries.Data.Migrations
 {
     [DbContext(typeof(CarBatteriesDbContext))]
-    [Migration("20210709112348_DbSets")]
+    [Migration("20210709142225_DbSets")]
     partial class DbSets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,7 +104,8 @@ namespace CarBatteries.Data.Migrations
 
                     b.HasIndex("AmperageId");
 
-                    b.HasIndex("BatteryCodeId");
+                    b.HasIndex("BatteryCodeId")
+                        .IsUnique();
 
                     b.HasIndex("BoxTypeId");
 
@@ -522,85 +523,85 @@ namespace CarBatteries.Data.Migrations
                     b.HasOne("CarBatteries.Data.Models.Amperage", "Amperage")
                         .WithMany("Batteries")
                         .HasForeignKey("AmperageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.BatteryCode", "BatteryCode")
-                        .WithMany()
-                        .HasForeignKey("BatteryCodeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithOne("Battery")
+                        .HasForeignKey("CarBatteries.Data.Models.Battery", "BatteryCodeId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.BoxType", "BoxType")
                         .WithMany("Batteries")
                         .HasForeignKey("BoxTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Brand", "Brand")
                         .WithMany("Batteries")
                         .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Capacity", "Capacity")
                         .WithMany("Batteries")
                         .HasForeignKey("CapacityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Category", "Category")
                         .WithMany("Batteries")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Height", "Height")
                         .WithMany("Batteries")
                         .HasForeignKey("HeightId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.HeightPlus", "HeightPlus")
                         .WithMany("Batteries")
                         .HasForeignKey("HeightPlusId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Length", "Length")
                         .WithMany("Batteries")
                         .HasForeignKey("LengthId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Price", "Price")
                         .WithMany("Batteries")
                         .HasForeignKey("PriceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Technology", "Technology")
                         .WithMany("Batteries")
                         .HasForeignKey("TechnologyId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Terminals", "Terminals")
                         .WithMany("Batteries")
                         .HasForeignKey("TerminalsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Weight", "Weight")
                         .WithMany("Batteries")
                         .HasForeignKey("WeightId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarBatteries.Data.Models.Width", "Width")
                         .WithMany("Batteries")
                         .HasForeignKey("WidthId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Amperage");
@@ -681,6 +682,11 @@ namespace CarBatteries.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CarBatteries.Data.BatteryCode", b =>
+                {
+                    b.Navigation("Battery");
                 });
 
             modelBuilder.Entity("CarBatteries.Data.Models.Amperage", b =>
