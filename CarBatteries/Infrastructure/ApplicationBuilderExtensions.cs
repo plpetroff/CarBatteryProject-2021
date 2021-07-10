@@ -43,6 +43,8 @@
                 new Category{ CategoryName = "AGM"},
 
             });
+
+            data.SaveChanges();
         }
     }
 }
