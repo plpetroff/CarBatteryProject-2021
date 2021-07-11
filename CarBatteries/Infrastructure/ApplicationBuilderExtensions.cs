@@ -35,12 +35,35 @@
 
             data.Categories.AddRange(new[]
             {
-                new Category{ CategoryName = "SMF Power"},
-                new Category{ CategoryName = "Truck"},
-                new Category{ CategoryName = "Truck SMF"},
+                new Category{ CategoryName = "SMF/ME"},
+                new Category{ CategoryName = "MF/K"},
+                new Category{ CategoryName = "JIS"},
+                new Category{ CategoryName = "TRUCK SMF"},
+                new Category{ CategoryName = "TRUCK K"},
                 new Category{ CategoryName = "Marine"},
-                new Category{ CategoryName = "EFB"},
-                new Category{ CategoryName = "AGM"},
+                new Category{ CategoryName = "Solar"},
+                new Category{ CategoryName = "Moto"},
+
+            });
+
+            data.SaveChanges();
+        }
+
+
+        private static void SeedTechnologies(CarBatteriesDbContext data)
+        {
+            if (data.Technologies.Any())
+            {
+                return;
+            }
+
+            data.Technologies.AddRange(new[]
+            {
+                new Technology{ Name = "Calcium"},
+                new Technology{ Name = "AGM"},
+                new Technology{ Name = "EFB"},
+                new Technology{ Name = "Gel"},                
+                new Technology{ Name = "VRLA"},                
 
             });
 
