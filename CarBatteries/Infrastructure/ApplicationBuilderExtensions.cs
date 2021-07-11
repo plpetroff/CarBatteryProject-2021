@@ -22,6 +22,10 @@
             data.Database.Migrate();
 
             SeedCategories(data);
+            SeedTechnologies(data);
+            SeedBrands(data);
+            SeedBoxType(data);
+            SeedTerminals(data);
 
             return app;
         }
@@ -65,6 +69,98 @@
                 new Technology{ Name = "Gel"},                
                 new Technology{ Name = "VRLA"},                
 
+            });
+
+            data.SaveChanges();
+        }
+
+        private static void SeedBrands(CarBatteriesDbContext data)
+        {
+            if (data.Brands.Any())
+            {
+                return;
+            }
+
+            data.Brands.AddRange(new[]
+            {
+                new Brand{ BrandName = "Cronus"},
+                new Brand{ BrandName = "Varta"},
+                new Brand{ BrandName = "Bosch"},
+                new Brand{ BrandName = "Amper"},
+                new Brand{ BrandName = "FREE MAX"},
+                new Brand{ BrandName = "X-PRO"},
+                
+
+            });
+
+            data.SaveChanges();
+        }
+
+
+        private static void SeedBoxType(CarBatteriesDbContext data)
+        {
+            if (data.BoxTypes.Any())
+            {
+                return;
+            }
+
+            data.BoxTypes.AddRange(new[]
+            {
+                new BoxType{ BoxTypeCode = "L0"},
+                new BoxType{ BoxTypeCode = "L1"},
+                new BoxType{ BoxTypeCode = "LB1"},
+                new BoxType{ BoxTypeCode = "L2"},
+                new BoxType{ BoxTypeCode = "LB2"},
+                new BoxType{ BoxTypeCode = "L3"},
+                new BoxType{ BoxTypeCode = "LB3"},
+                new BoxType{ BoxTypeCode = "L4"},
+                new BoxType{ BoxTypeCode = "LB4"},
+                new BoxType{ BoxTypeCode = "L5"},
+                new BoxType{ BoxTypeCode = "LB5"},
+                new BoxType{ BoxTypeCode = "L6"},
+                new BoxType{ BoxTypeCode = "LB6"},
+                new BoxType{ BoxTypeCode = "B19"},
+                new BoxType{ BoxTypeCode = "B24"},
+                new BoxType{ BoxTypeCode = "D20"},
+                new BoxType{ BoxTypeCode = "D23"},
+                new BoxType{ BoxTypeCode = "D26"},
+                new BoxType{ BoxTypeCode = "D31"},
+                new BoxType{ BoxTypeCode = "M24"},
+                new BoxType{ BoxTypeCode = "M27"},
+                new BoxType{ BoxTypeCode = "M31"},
+                new BoxType{ BoxTypeCode = "A"},
+                new BoxType{ BoxTypeCode = "B"},
+                new BoxType{ BoxTypeCode = "C"},
+                new BoxType{ BoxTypeCode = "MAC 110"},
+                new BoxType{ BoxTypeCode = "MAC 143"},
+                new BoxType{ BoxTypeCode = "MAC 155"},
+                
+
+            });
+
+            data.SaveChanges();
+        }
+
+
+        private static void SeedTerminals(CarBatteriesDbContext data)
+        {
+            if (data.Terminals.Any())
+            {
+                return;
+            }
+
+            data.Terminals.AddRange(new[]
+            {
+                new Terminals{ Description = "R + Standart"},
+                new Terminals{ Description = "L + Standart"},
+                new Terminals{ Description = "R + Small"},
+                new Terminals{ Description = "L + Small"},
+                new Terminals{ Description = "Side"},
+                new Terminals{ Description = "Marine twin"},
+                new Terminals{ Description = "Stud"},
+                new Terminals{ Description = "Dual"},
+                new Terminals{ Description = "Top"},              
+                
             });
 
             data.SaveChanges();
