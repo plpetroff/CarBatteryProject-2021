@@ -14,20 +14,42 @@
     {
         public static IApplicationBuilder PrepareDatabase(this IApplicationBuilder app)
         {
-            
+
             using var scopedServices = app.ApplicationServices.CreateScope();
 
             var data = scopedServices.ServiceProvider.GetService<CarBatteriesDbContext>();
 
             data.Database.Migrate();
 
-            SeedCategories(data);
-            SeedTechnologies(data);
             SeedBrands(data);
+            SeedCategories(data);
+            SeedTechnologies(data);            
             SeedBoxType(data);
             SeedTerminals(data);
 
             return app;
+        }
+
+        private static void SeedBrands(CarBatteriesDbContext data)
+        {
+            if (data.Brands.Any())
+            {
+                return;
+            }
+
+            data.Brands.AddRange(new[]
+            {
+                new Brand{ BrandName = "Cronus"},
+                new Brand{ BrandName = "Varta"},
+                new Brand{ BrandName = "Bosch"},
+                new Brand{ BrandName = "Amper"},
+                new Brand{ BrandName = "FREE MAX"},
+                new Brand{ BrandName = "X-PRO"},
+
+
+            });
+
+            data.SaveChanges();
         }
 
         private static void SeedCategories(CarBatteriesDbContext data)
@@ -53,7 +75,6 @@
             data.SaveChanges();
         }
 
-
         private static void SeedTechnologies(CarBatteriesDbContext data)
         {
             if (data.Technologies.Any())
@@ -66,36 +87,13 @@
                 new Technology{ Name = "Calcium"},
                 new Technology{ Name = "AGM"},
                 new Technology{ Name = "EFB"},
-                new Technology{ Name = "Gel"},                
-                new Technology{ Name = "VRLA"},                
+                new Technology{ Name = "Gel"},
+                new Technology{ Name = "VRLA"},
 
             });
 
             data.SaveChanges();
         }
-
-        private static void SeedBrands(CarBatteriesDbContext data)
-        {
-            if (data.Brands.Any())
-            {
-                return;
-            }
-
-            data.Brands.AddRange(new[]
-            {
-                new Brand{ BrandName = "Cronus"},
-                new Brand{ BrandName = "Varta"},
-                new Brand{ BrandName = "Bosch"},
-                new Brand{ BrandName = "Amper"},
-                new Brand{ BrandName = "FREE MAX"},
-                new Brand{ BrandName = "X-PRO"},
-                
-
-            });
-
-            data.SaveChanges();
-        }
-
 
         private static void SeedBoxType(CarBatteriesDbContext data)
         {
@@ -134,13 +132,12 @@
                 new BoxType{ BoxTypeCode = "MAC 110"},
                 new BoxType{ BoxTypeCode = "MAC 143"},
                 new BoxType{ BoxTypeCode = "MAC 155"},
-                
+
 
             });
 
             data.SaveChanges();
         }
-
 
         private static void SeedTerminals(CarBatteriesDbContext data)
         {
@@ -159,8 +156,8 @@
                 new Terminals{ Description = "Marine twin"},
                 new Terminals{ Description = "Stud"},
                 new Terminals{ Description = "Dual"},
-                new Terminals{ Description = "Top"},              
-                
+                new Terminals{ Description = "Top"},
+
             });
 
             data.SaveChanges();

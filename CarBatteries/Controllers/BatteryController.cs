@@ -18,9 +18,11 @@
         }
         public IActionResult Add()
         {
-            return View(new AddBatteryFormModel 
+            return View(new AddBatteryFormModel
             { 
-                Brands = this.GetBatteryBrands()
+                Brands = this.GetBatteryBrands(),
+                Categories = this.GetBatteryCategories()
+                
             });
         }
 
@@ -40,6 +42,19 @@
                         Name = b.BrandName
                     })
                     .ToList();
+        }
+
+
+        private IEnumerable<BatteryCategoryViewModel> GetBatteryCategories()
+        {
+            return this.data
+                .Categories
+                .Select(c => new BatteryCategoryViewModel
+                {
+                    Id = c.Id,
+                    Name = c.CategoryName
+                })
+                .ToList();
         }
     }
 }
