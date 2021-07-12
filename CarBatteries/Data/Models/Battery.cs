@@ -24,6 +24,9 @@
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
+        public int BoxTypeId { get; set; }
+        public BoxType BoxType { get; set; }
+
         public int LengthId { get; set; }
         public Length Length { get; set; }
 
@@ -41,9 +44,6 @@
 
         public int WeightId { get; set; }
         public Weight Weight { get; set; }
-
-        public int BoxTypeId { get; set; }
-        public BoxType BoxType { get; set; }
 
         public int BatteryCodeId { get; set; }
         public BatteryCode BatteryCode { get; set; }
