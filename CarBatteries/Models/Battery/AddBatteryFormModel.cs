@@ -17,13 +17,17 @@
         [Display(Name = "Batteryyyy Brand")]
         public Brand Brand { get; set; }
 
-        public int CapacityId { get; set; }
-        public int AmperageId { get; set; }
-        public int TechnologyId { get; set; }
-
         [Display(Name = "Category of the Battery")]
         public int CategoryId { get; set; }
         public IEnumerable<BatteryCategoryViewModel> Categories { get; set; }
+
+        public int TechnologyId { get; set; }
+        public IEnumerable<BatteryTechnologyViewModel> Technologies { get; set; }
+        public int CapacityId { get; set; }
+        public int AmperageId { get; set; }
+
+
+
 
         public int BoxTypeId { get; set; }
 

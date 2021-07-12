@@ -21,7 +21,8 @@
             return View(new AddBatteryFormModel
             { 
                 Brands = this.GetBatteryBrands(),
-                Categories = this.GetBatteryCategories()
+                Categories = this.GetBatteryCategories(),
+                Technologies = this.GetBatteryTechnologies()
                 
             });
         }
@@ -53,6 +54,18 @@
                 {
                     Id = c.Id,
                     Name = c.CategoryName
+                })
+                .ToList();
+        }
+
+        private IEnumerable<BatteryTechnologyViewModel> GetBatteryTechnologies()
+        {
+            return this.data
+                .Technologies
+                .Select(t => new BatteryTechnologyViewModel
+                {
+                    Id = t.Id,
+                    Name = t.Name
                 })
                 .ToList();
         }
