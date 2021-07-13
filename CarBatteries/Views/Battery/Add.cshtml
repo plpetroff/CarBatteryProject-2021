@@ -47,7 +47,34 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label asp-for="CapacityId"> Battery capacity</label>
+                    <select asp-for="CapacityId" class="form-control">
+                        @foreach (var capacity in Model.Capacities)
+                        {
+                            <option value="@capacity.Id">@capacity.Value</option>
 
+                        }
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="AmperageId"> Battery amperage</label>
+                    <select asp-for="AmperageId" class="form-control">
+                        @foreach (var amperage in Model.Amperages)
+                        {
+                            <option value="@amperage.Id">@amperage.Value</option>
+
+                        }
+                    </select>
+                </div>
+
+
+
+
+                <br />
+                <br />
 
                 <div class="form-group">
                     <label asp-for="Brand">Battery Brand</label>

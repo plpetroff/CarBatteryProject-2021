@@ -14,8 +14,6 @@
         public int BrandId { get; set; }
         public IEnumerable<BatteryBrandViewModel> Brands { get; set; }
 
-        [Display(Name = "Batteryyyy Brand")]
-        public Brand Brand { get; set; }
 
         [Display(Name = "Category of the Battery")]
         public int CategoryId { get; set; }
@@ -23,11 +21,18 @@
 
         public int TechnologyId { get; set; }
         public IEnumerable<BatteryTechnologyViewModel> Technologies { get; set; }
+
+
         public int CapacityId { get; set; }
-        public int AmperageId { get; set; }
+        public IEnumerable<BatteryCapacityViewModel> Capacities { get; set; }
 
 
+        public int AmperageId { get; set; } 
+        public IEnumerable<BatteryAmperageViewModel> Amperages { get; set; }
 
+
+        [Display(Name = "Batteryyyy Brand")]
+        public Brand Brand { get; set; }
 
         public int BoxTypeId { get; set; }
 

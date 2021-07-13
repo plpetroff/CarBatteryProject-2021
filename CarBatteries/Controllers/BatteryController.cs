@@ -22,8 +22,10 @@
             { 
                 Brands = this.GetBatteryBrands(),
                 Categories = this.GetBatteryCategories(),
-                Technologies = this.GetBatteryTechnologies()
-                
+                Technologies = this.GetBatteryTechnologies(),
+                Capacities = this.GetBatteryCapacities(),
+                Amperages = this.GetBatteryAmperages()
+
             });
         }
 
@@ -67,6 +69,34 @@
                     Id = t.Id,
                     Name = t.Name
                 })
+                .ToList();
+        }
+
+
+        private IEnumerable<BatteryCapacityViewModel> GetBatteryCapacities()
+        {
+            return this.data
+                .Capacities
+                .Select(c => new BatteryCapacityViewModel
+                {
+                    Id = c.Id,
+                    Value = c.Value
+                })
+                .OrderBy(c=>c.Value)
+                .ToList();
+        }
+
+
+        private IEnumerable<BatteryAmperageViewModel> GetBatteryAmperages()
+        {
+            return this.data
+                .Amperages
+                .Select(a => new BatteryAmperageViewModel
+                {
+                    Id = a.Id,
+                    Value = a.Value
+                })
+                .OrderBy(a => a.Value)
                 .ToList();
         }
     }
