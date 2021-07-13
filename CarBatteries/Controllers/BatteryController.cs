@@ -1,6 +1,7 @@
 ﻿namespace CarBatteries.Controllers
 {
     using CarBatteries.Data;
+    using CarBatteries.Data.Models;
     using CarBatteries.Models.Battery;
     using Microsoft.AspNetCore.Mvc;
     using System;
@@ -34,7 +35,12 @@
         [HttpPost]
         public IActionResult Add(AddBatteryFormModel batteryModel)
         {
-            if (ModelState.IsValid)
+            if (!this.data.Brands.Any(b => b.Id == batteryModel.BrandId))
+            {
+                this.ModelState.AddModelError(nameof(batteryModel.BrandId), "Brand does not exist");
+            }
+
+            if (!ModelState.IsValid)
             {
                 batteryModel.Brands = this.GetBatteryBrands();
                 batteryModel.Categories = this.GetBatteryCategories();
@@ -45,6 +51,23 @@
                 batteryModel.BoxTypes = this.GetBatteryBoxTypes();
                 return View(batteryModel);
             }
+
+            var battery = new Battery
+            {
+                BrandId = batteryModel.BrandId,
+                CategoryId = batteryModel.CategoryId,
+                TechnologyId = batteryModel.TechnologyId,
+                CapacityId = batteryModel.CapacityId,
+                AmperageId = batteryModel.AmperageId,
+                TerminalsId = batteryModel.TerminalsId,
+                BoxTypeId = batteryModel.BoxTypeId
+
+            };
+
+            this.data.Batteries.Add(battery);
+
+            this.data.SaveChanges();
+
             return RedirectToAction("Index", "Home");
         }
 

@@ -69,33 +69,33 @@ namespace CarBatteries.Data
                 .HasForeignKey(b => b.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .Entity<Battery>()
-                .HasOne(b => b.Length)
-                .WithMany(l => l.Batteries)
-                .HasForeignKey(b => b.LengthId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .Entity<Battery>()
+            //    .HasOne(b => b.Length)
+            //    .WithMany(l => l.Batteries)
+            //    .HasForeignKey(b => b.LengthId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .Entity<Battery>()
-                .HasOne(b => b.Width)
-                .WithMany(w => w.Batteries)
-                .HasForeignKey(b => b.WidthId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .Entity<Battery>()
+            //    .HasOne(b => b.Width)
+            //    .WithMany(w => w.Batteries)
+            //    .HasForeignKey(b => b.WidthId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .Entity<Battery>()
-                .HasOne(b => b.Height)
-                .WithMany(h => h.Batteries)
-                .HasForeignKey(b => b.HeightId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .Entity<Battery>()
+            //    .HasOne(b => b.Height)
+            //    .WithMany(h => h.Batteries)
+            //    .HasForeignKey(b => b.HeightId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .Entity<Battery>()
-                .HasOne(b => b.HeightPlus)
-                .WithMany(h => h.Batteries)
-                .HasForeignKey(b => b.HeightPlusId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .Entity<Battery>()
+            //    .HasOne(b => b.HeightPlus)
+            //    .WithMany(h => h.Batteries)
+            //    .HasForeignKey(b => b.HeightPlusId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .Entity<Battery>()
@@ -104,12 +104,12 @@ namespace CarBatteries.Data
                 .HasForeignKey(b => b.TerminalsId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .Entity<Battery>()
-                .HasOne(b => b.Weight)
-                .WithMany(w => w.Batteries)
-                .HasForeignKey(b => b.WeightId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .Entity<Battery>()
+            //    .HasOne(b => b.Weight)
+            //    .WithMany(w => w.Batteries)
+            //    .HasForeignKey(b => b.WeightId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .Entity<Battery>()
@@ -118,19 +118,19 @@ namespace CarBatteries.Data
                 .HasForeignKey(b => b.BoxTypeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .Entity<Battery>()
-                .HasOne(b => b.BatteryCode)
-                .WithOne(bc => bc.Battery)
-                .HasForeignKey<Battery>(b=>b.BatteryCodeId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .Entity<Battery>()
+            //    .HasOne(b => b.BatteryCode)
+            //    .WithOne(bc => bc.Battery)
+            //    .HasForeignKey<Battery>(b=>b.BatteryCodeId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .Entity<Battery>()
-                .HasOne(b => b.Price)
-                .WithMany(p => p.Batteries)
-                .HasForeignKey(b => b.PriceId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .Entity<Battery>()
+            //    .HasOne(b => b.Price)
+            //    .WithMany(p => p.Batteries)
+            //    .HasForeignKey(b => b.PriceId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }

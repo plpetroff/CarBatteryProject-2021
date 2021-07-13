@@ -37,26 +37,26 @@
         public IEnumerable<BatteryBoxTypeViewModel> BoxTypes { get; set; }
 
 
-        [Display(Name = "Batteryyyy Brand")]
-        public Brand Brand { get; set; }
+        //[Display(Name = "Batteryyyy Brand")]
+        //public Brand Brand { get; set; }
 
-        public int LengthId { get; set; }
+        //public int LengthId { get; set; }
 
-        public int WidthId { get; set; }
-
-
-        public int HeightId { get; set; }
-
-        public int HeightPlusId { get; set; }
+        //public int WidthId { get; set; }
 
 
+        //public int HeightId { get; set; }
 
-        public int WeightId { get; set; }
+        //public int HeightPlusId { get; set; }
 
 
 
-        public int BatteryCodeId { get; set; }
+        //public int WeightId { get; set; }
 
-        public int PriceId { get; set; }
+
+
+        //public int BatteryCodeId { get; set; }
+
+        //public int PriceId { get; set; }
     }
 }
