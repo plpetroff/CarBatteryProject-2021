@@ -24,6 +24,7 @@
             SeedBrands(data);
             SeedCategories(data);
             SeedTechnologies(data);
+            SeedCapacities(data);
             SeedAmperages(data);            
             SeedBoxType(data);
             SeedTerminals(data);
@@ -90,6 +91,60 @@
                 new Technology{ Name = "EFB"},
                 new Technology{ Name = "Gel"},
                 new Technology{ Name = "VRLA"},
+
+            });
+
+            data.SaveChanges();
+        }
+
+        private static void SeedCapacities(CarBatteriesDbContext data)
+        {
+            if (data.Capacities.Any())
+            {
+                return;
+            }
+
+            data.Capacities.AddRange(new[]
+            {
+                new Capacity{ Value = 35},
+                new Capacity{ Value = 34},
+                new Capacity{ Value = 45},
+                new Capacity{ Value = 46},
+                new Capacity{ Value = 48},
+                new Capacity{ Value = 50},
+                new Capacity{ Value = 54},
+                new Capacity{ Value = 55},
+                new Capacity{ Value = 60},
+                new Capacity{ Value = 62},
+                new Capacity{ Value = 65},
+                new Capacity{ Value = 68},
+                new Capacity{ Value = 70},
+                new Capacity{ Value = 72},
+                new Capacity{ Value = 75},
+                new Capacity{ Value = 77},
+                new Capacity{ Value = 80},
+                new Capacity{ Value = 82},
+                new Capacity{ Value = 85},
+                new Capacity{ Value = 90},
+                new Capacity{ Value = 94},
+                new Capacity{ Value = 95},
+                new Capacity{ Value = 100},
+                new Capacity{ Value = 105},
+                new Capacity{ Value = 110},
+                new Capacity{ Value = 120},
+                new Capacity{ Value = 125},
+                new Capacity{ Value = 130},
+                new Capacity{ Value = 140},
+                new Capacity{ Value = 150},
+                new Capacity{ Value = 165},
+                new Capacity{ Value = 180},
+                new Capacity{ Value = 200},
+                new Capacity{ Value = 220},
+                new Capacity{ Value = 225},
+                new Capacity{ Value = 230},
+                new Capacity{ Value = 240},
+                
+
 
             });
 
