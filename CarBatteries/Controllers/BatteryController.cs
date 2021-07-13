@@ -24,7 +24,8 @@
                 Categories = this.GetBatteryCategories(),
                 Technologies = this.GetBatteryTechnologies(),
                 Capacities = this.GetBatteryCapacities(),
-                Amperages = this.GetBatteryAmperages()
+                Amperages = this.GetBatteryAmperages(),
+                Terminals = this.GetBatteryTerminals()
 
             });
         }
@@ -97,6 +98,19 @@
                     Value = a.Value
                 })
                 .OrderBy(a => a.Value)
+                .ToList();
+        }
+
+
+        private IEnumerable<BatteryTerminalsViewModel> GetBatteryTerminals()
+        {
+            return this.data
+                .Terminals
+                .Select(t => new BatteryTerminalsViewModel
+                {
+                    Id = t.Id,
+                    Name = t.Description
+                })
                 .ToList();
         }
     }

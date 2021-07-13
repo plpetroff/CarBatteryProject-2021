@@ -71,6 +71,16 @@
                 </div>
 
 
+                <div class="form-group">
+                    <label asp-for="TerminalsId"> Battery terminals</label>
+                    <select asp-for="TerminalsId" class="form-control">
+                        @foreach (var terminal in Model.Terminals)
+                        {
+                            <option value="@terminal.Id">@terminal.Name</option>
+
+                        }
+                    </select>
+                </div>
 
 
                 <br />
