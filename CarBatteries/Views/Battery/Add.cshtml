@@ -83,6 +83,17 @@
                 </div>
 
 
+                <div class="form-group">
+                    <label asp-for="BoxTypeId"> Battery box type</label>
+                    <select asp-for="BoxTypeId" class="form-control">
+                        @foreach (var box in Model.BoxTypes)
+                        {
+                            <option value="@box.Id">@box.Name</option>
+
+                        }
+                    </select>
+                </div>
+
                 <br />
                 <br />
 

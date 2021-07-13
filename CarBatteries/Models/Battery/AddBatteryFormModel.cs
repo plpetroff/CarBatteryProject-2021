@@ -30,18 +30,15 @@
         public int AmperageId { get; set; }
         public IEnumerable<BatteryAmperageViewModel> Amperages { get; set; }
 
-        public int BoxTypeId { get; set; }
-        public IEnumerable<BatteryBoxTypeViewModel> BoxTypes { get; set; }
-
         public int TerminalsId { get; set; }
         public IEnumerable<BatteryTerminalsViewModel> Terminals { get; set; }
+
+        public int BoxTypeId { get; set; }
+        public IEnumerable<BatteryBoxTypeViewModel> BoxTypes { get; set; }
 
 
         [Display(Name = "Batteryyyy Brand")]
         public Brand Brand { get; set; }
-
-
-
 
         public int LengthId { get; set; }
 

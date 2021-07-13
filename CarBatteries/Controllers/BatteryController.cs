@@ -19,13 +19,14 @@
         public IActionResult Add()
         {
             return View(new AddBatteryFormModel
-            { 
+            {
                 Brands = this.GetBatteryBrands(),
                 Categories = this.GetBatteryCategories(),
                 Technologies = this.GetBatteryTechnologies(),
                 Capacities = this.GetBatteryCapacities(),
                 Amperages = this.GetBatteryAmperages(),
-                Terminals = this.GetBatteryTerminals()
+                Terminals = this.GetBatteryTerminals(),
+                BoxTypes = this.GetBatteryBoxTypes()
 
             });
         }
@@ -33,7 +34,18 @@
         [HttpPost]
         public IActionResult Add(AddBatteryFormModel batteryModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                batteryModel.Brands = this.GetBatteryBrands();
+                batteryModel.Categories = this.GetBatteryCategories();
+                batteryModel.Technologies = this.GetBatteryTechnologies();
+                batteryModel.Capacities = this.GetBatteryCapacities();
+                batteryModel.Amperages = this.GetBatteryAmperages();
+                batteryModel.Terminals = this.GetBatteryTerminals();
+                batteryModel.BoxTypes = this.GetBatteryBoxTypes();
+                return View(batteryModel);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         private IEnumerable<BatteryBrandViewModel> GetBatteryBrands()
@@ -83,7 +95,7 @@
                     Id = c.Id,
                     Value = c.Value
                 })
-                .OrderBy(c=>c.Value)
+                .OrderBy(c => c.Value)
                 .ToList();
         }
 
@@ -113,5 +125,19 @@
                 })
                 .ToList();
         }
+
+        private IEnumerable<BatteryBoxTypeViewModel> GetBatteryBoxTypes()
+        {
+            return this.data
+                .BoxTypes
+                .Select(bt => new BatteryBoxTypeViewModel
+                {
+                    Id = bt.Id,
+                    Name = bt.BoxTypeCode
+                })
+                .OrderBy(bt => bt.Name)
+                .ToList();
+        }
+
     }
 }
