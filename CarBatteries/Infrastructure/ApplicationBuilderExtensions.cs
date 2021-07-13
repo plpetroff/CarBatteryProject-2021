@@ -23,7 +23,8 @@
 
             SeedBrands(data);
             SeedCategories(data);
-            SeedTechnologies(data);            
+            SeedTechnologies(data);
+            SeedAmperages(data);            
             SeedBoxType(data);
             SeedTerminals(data);
 
@@ -89,6 +90,57 @@
                 new Technology{ Name = "EFB"},
                 new Technology{ Name = "Gel"},
                 new Technology{ Name = "VRLA"},
+
+            });
+
+            data.SaveChanges();
+        }
+
+        private static void SeedAmperages(CarBatteriesDbContext data)
+        {
+            if (data.Amperages.Any())
+            {
+                return;
+            }
+
+            data.Amperages.AddRange(new[]
+            {
+                new Amperage{ Value = 300},
+                new Amperage{ Value = 380},
+                new Amperage{ Value = 400},
+                new Amperage{ Value = 420},
+                new Amperage{ Value = 430},
+                new Amperage{ Value = 450},
+                new Amperage{ Value = 460},
+                new Amperage{ Value = 480},
+                new Amperage{ Value = 500},
+                new Amperage{ Value = 510},
+                new Amperage{ Value = 540},
+                new Amperage{ Value = 550},
+                new Amperage{ Value = 580},
+                new Amperage{ Value = 600},
+                new Amperage{ Value = 630},
+                new Amperage{ Value = 650},
+                new Amperage{ Value = 680},
+                new Amperage{ Value = 700},
+                new Amperage{ Value = 720},
+                new Amperage{ Value = 730},
+                new Amperage{ Value = 750},
+                new Amperage{ Value = 780},
+                new Amperage{ Value = 800},
+                new Amperage{ Value = 820},
+                new Amperage{ Value = 830},
+                new Amperage{ Value = 840},
+                new Amperage{ Value = 850},
+                new Amperage{ Value = 900},
+                new Amperage{ Value = 920},
+                new Amperage{ Value = 950},
+                new Amperage{ Value = 1000},
+                new Amperage{ Value = 1100},
+                new Amperage{ Value = 1200},
+                new Amperage{ Value = 1300},
+                new Amperage{ Value = 1400}                
+
 
             });
 
