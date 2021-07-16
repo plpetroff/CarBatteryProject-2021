@@ -8,10 +8,10 @@
 
     public class BatteryCode
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public string BatteryCodeValue  { get; set; }
 
-        public Battery Battery { get; set; }
+        //public Battery Battery { get; set; }
     }
 }

@@ -10,6 +10,6 @@
         public int Id { get; set; }
 
         public double ValueInKg { get; set; }
-        public IEnumerable<Battery> Batteries { get; init; } = new List<Battery>();
+        //public IEnumerable<Battery> Batteries { get; init; } = new List<Battery>();
     }
 }

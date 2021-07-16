@@ -21,7 +21,7 @@ namespace CarBatteries.Data.Migrations
 
             modelBuilder.Entity("CarBatteries.Data.BatteryCode", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -59,9 +59,6 @@ namespace CarBatteries.Data.Migrations
                     b.Property<int>("AmperageId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BatteryCodeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("BoxTypeId")
                         .HasColumnType("int");
 
@@ -74,36 +71,15 @@ namespace CarBatteries.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("HeightId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeightPlusId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LengthId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PriceId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TechnologyId")
                         .HasColumnType("int");
 
                     b.Property<int>("TerminalsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("WeightId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WidthId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AmperageId");
-
-                    b.HasIndex("BatteryCodeId")
-                        .IsUnique();
 
                     b.HasIndex("BoxTypeId");
 
@@ -113,21 +89,9 @@ namespace CarBatteries.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("HeightId");
-
-                    b.HasIndex("HeightPlusId");
-
-                    b.HasIndex("LengthId");
-
-                    b.HasIndex("PriceId");
-
                     b.HasIndex("TechnologyId");
 
                     b.HasIndex("TerminalsId");
-
-                    b.HasIndex("WeightId");
-
-                    b.HasIndex("WidthId");
 
                     b.ToTable("Batteries");
                 });
@@ -196,66 +160,6 @@ namespace CarBatteries.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("CarBatteries.Data.Models.Height", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ValueInMm")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Heights");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.HeightPlus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ValueInMm")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HeightsPluses");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.Length", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ValueInMm")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Lengths");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.Price", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("ValueInBGN")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Prices");
-                });
-
             modelBuilder.Entity("CarBatteries.Data.Models.Technology", b =>
                 {
                     b.Property<int>("Id")
@@ -284,36 +188,6 @@ namespace CarBatteries.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Terminals");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.Weight", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("ValueInKg")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Weights");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.Width", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ValueInMm")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Widths");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -524,12 +398,6 @@ namespace CarBatteries.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("CarBatteries.Data.BatteryCode", "BatteryCode")
-                        .WithOne("Battery")
-                        .HasForeignKey("CarBatteries.Data.Models.Battery", "BatteryCodeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("CarBatteries.Data.Models.BoxType", "BoxType")
                         .WithMany("Batteries")
                         .HasForeignKey("BoxTypeId")
@@ -554,30 +422,6 @@ namespace CarBatteries.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("CarBatteries.Data.Models.Height", "Height")
-                        .WithMany("Batteries")
-                        .HasForeignKey("HeightId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("CarBatteries.Data.Models.HeightPlus", "HeightPlus")
-                        .WithMany("Batteries")
-                        .HasForeignKey("HeightPlusId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("CarBatteries.Data.Models.Length", "Length")
-                        .WithMany("Batteries")
-                        .HasForeignKey("LengthId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("CarBatteries.Data.Models.Price", "Price")
-                        .WithMany("Batteries")
-                        .HasForeignKey("PriceId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("CarBatteries.Data.Models.Technology", "Technology")
                         .WithMany("Batteries")
                         .HasForeignKey("TechnologyId")
@@ -590,21 +434,7 @@ namespace CarBatteries.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("CarBatteries.Data.Models.Weight", "Weight")
-                        .WithMany("Batteries")
-                        .HasForeignKey("WeightId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("CarBatteries.Data.Models.Width", "Width")
-                        .WithMany("Batteries")
-                        .HasForeignKey("WidthId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Amperage");
-
-                    b.Navigation("BatteryCode");
 
                     b.Navigation("BoxType");
 
@@ -614,21 +444,9 @@ namespace CarBatteries.Data.Migrations
 
                     b.Navigation("Category");
 
-                    b.Navigation("Height");
-
-                    b.Navigation("HeightPlus");
-
-                    b.Navigation("Length");
-
-                    b.Navigation("Price");
-
                     b.Navigation("Technology");
 
                     b.Navigation("Terminals");
-
-                    b.Navigation("Weight");
-
-                    b.Navigation("Width");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -682,11 +500,6 @@ namespace CarBatteries.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CarBatteries.Data.BatteryCode", b =>
-                {
-                    b.Navigation("Battery");
-                });
-
             modelBuilder.Entity("CarBatteries.Data.Models.Amperage", b =>
                 {
                     b.Navigation("Batteries");
@@ -712,42 +525,12 @@ namespace CarBatteries.Data.Migrations
                     b.Navigation("Batteries");
                 });
 
-            modelBuilder.Entity("CarBatteries.Data.Models.Height", b =>
-                {
-                    b.Navigation("Batteries");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.HeightPlus", b =>
-                {
-                    b.Navigation("Batteries");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.Length", b =>
-                {
-                    b.Navigation("Batteries");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.Price", b =>
-                {
-                    b.Navigation("Batteries");
-                });
-
             modelBuilder.Entity("CarBatteries.Data.Models.Technology", b =>
                 {
                     b.Navigation("Batteries");
                 });
 
             modelBuilder.Entity("CarBatteries.Data.Models.Terminals", b =>
-                {
-                    b.Navigation("Batteries");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.Weight", b =>
-                {
-                    b.Navigation("Batteries");
-                });
-
-            modelBuilder.Entity("CarBatteries.Data.Models.Width", b =>
                 {
                     b.Navigation("Batteries");
                 });

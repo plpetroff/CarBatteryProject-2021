@@ -22,16 +22,16 @@ namespace CarBatteries.Data
         public DbSet<Amperage> Amperages { get; init; }
         public DbSet<Technology> Technologies { get; init; }
         public DbSet<Category> Categories { get; init; }
-        public DbSet<Length> Lengths { get; init; }
-        public DbSet<Width> Widths { get; init; }
-        public DbSet<Height> Heights { get; init; }
-        public DbSet<HeightPlus> HeightsPluses { get; init; }
         public DbSet<Terminals> Terminals { get; init; }
-        public DbSet<Weight> Weights { get; init; }
         public DbSet<BoxType> BoxTypes { get; init; }
         public DbSet<BatteryCode> BatteryCodes { get; init; }
-        public DbSet<Price> Prices { get; init; }
 
+        //public DbSet<Price> Prices { get; init; }
+        //public DbSet<Length> Lengths { get; init; }
+        //public DbSet<Width> Widths { get; init; }
+        //public DbSet<Height> Heights { get; init; }
+        //public DbSet<HeightPlus> HeightsPluses { get; init; }
+        //public DbSet<Weight> Weights { get; init; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
@@ -119,10 +119,10 @@ namespace CarBatteries.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             //builder
-            //    .Entity<Battery>()
+            //   .Entity<Battery>()
             //    .HasOne(b => b.BatteryCode)
             //    .WithOne(bc => bc.Battery)
-            //    .HasForeignKey<Battery>(b=>b.BatteryCodeId)
+            //    .HasForeignKey<Battery>(b => b.BatteryCodeId)
             //    .OnDelete(DeleteBehavior.Restrict);
 
             //builder

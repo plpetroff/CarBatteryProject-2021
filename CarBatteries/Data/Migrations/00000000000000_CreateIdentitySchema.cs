@@ -1,7 +1,7 @@
 ﻿
 namespace CarBatteries.Data.Migrations
 {
-    using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
     public partial class CreateIdentitySchema : Migration
