@@ -32,6 +32,27 @@
             });
         }
 
+        public IActionResult All()
+        {
+            var batteries = this.data
+                .Batteries
+                .OrderBy(b=>b.Id)
+                .Select(b => new BatteryListingViewModel
+                {
+                    BrandId = b.BrandId,
+                    Brand = b.Brand.BrandName,
+                    TechnologyId = b.TechnologyId,
+                    Technology = b.Technology.Name,
+                    CapacityId = b.CapacityId,
+                    Capacity = b.Capacity.Value.ToString(),
+                    AmperageId = b.AmperageId,
+                    Amperage = b.Amperage.Value.ToString()
+                })
+                .ToList();
+
+            return View(batteries);
+        }
+
         [HttpPost]
         public IActionResult Add(AddBatteryFormModel batteryModel)
         {

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BatteryListingViewModel>
+
+@{
+    ViewData["Title"] = "All Batteries";
+}
+
+<div class="row">
+    @foreach (var battery in Model)
+    {
+        <div class="card">
+            <img class="card-img-top" src="@battery.BrandId" alt="@battery.Brand @battery.Capacity">
+            <div class="card-body">
+                <h5 class="card-title">@battery.Brand @battery.Technology @battery.Amperage </h5>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+
+            </div>
+        </div>
+    }
+
+</div>
+
