@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
     using CarBatteries.Data;
     using CarBatteries.Models.Battery;
+    using CarBatteries.Models.Home;
 
     public class HomeController : Controller
     {
@@ -22,24 +23,31 @@ using System.Threading.Tasks;
 
         public IActionResult Index()
         {
+            var totalBatteries = this.data.Batteries.Count();
+
             var batteries = this.data
                 .Batteries
                 .OrderBy(b => b.Id)
-                .Select(b => new BatteryListingViewModel
+                .Select(b => new BatteryIndexViewModel
                 {
                     BrandId = b.BrandId,
                     Brand = b.Brand.BrandName,
                     TechnologyId = b.TechnologyId,
                     Technology = b.Technology.Name,
                     CapacityId = b.CapacityId,
-                    Capacity = b.Capacity.Value.ToString(),
-                    AmperageId = b.AmperageId,
-                    Amperage = b.Amperage.Value.ToString()
+                    Capacity = b.Capacity.Value.ToString()
+                    
                 })
                 .Take(3)
                 .ToList();
 
-            return View(batteries);
+
+
+            return View(new IndexViewModel 
+            { 
+                TotalBatteries = totalBatteries,
+                Batteries = batteries
+            });
         }
 
         

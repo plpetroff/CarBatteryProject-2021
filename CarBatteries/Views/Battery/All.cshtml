@@ -8,18 +8,18 @@
     @foreach (var battery in Model)
     {
         <div class="col-md-4">
-            <div class="card">
+            <div class="card mb-4">
                 <img class="card-img-top" src="@battery.Id" alt="@battery.Brand - @battery.Capacity Ah">
                 <div class="card-body">
                     <h5 class="card-title">this display battery: @battery.Brand @battery.Technology - @battery.Amperage EN </h5>
-                    <a asp-controller="Batteries" asp-action="Details" asp-route-id="@battery.Id" class="btn btn-primary">View More</a>
+                    <a asp-controller="Battery" asp-action="Details" asp-route-id="@battery.Id" class="btn btn-primary">View More</a>
 
                 </div>
             </div>
 
-
+            
         </div>
-
+        
         
     }
 

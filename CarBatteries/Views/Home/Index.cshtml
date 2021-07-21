@@ -1,16 +1,17 @@
-﻿@model List<BatteryListingViewModel>
+﻿@model IndexViewModel
 
 @{
     ViewData["Title"] = "Welcome";
 }
 
 @{
-    var firstBattery = Model.Any() ? Model[0] : null;
-    var secondBattery = Model.Count > 1 ? Model[1] : null;
-    var thirdBattery = Model.Count > 2 ? Model[2] : null;
+    var batteries = Model.Batteries;
+    var firstBattery = batteries.Any() ? batteries[0] : null;
+    var secondBattery = batteries.Count > 1 ? batteries[1] : null;
+    var thirdBattery = batteries.Count > 2 ? batteries[2] : null;
 }
 
-@if (!Model.Any())
+@if (!batteries.Any())
 {
     <div class="jumbotron">
         <h1 class="display-4">Welcome to the battery project!</h1>
@@ -21,14 +22,14 @@
         </p>
     </div>
 }
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide mt-5" data-ride="carousel">
     <div class="carousel-inner">
         @if (firstBattery != null)
         {
             <div class="carousel-item active">
                 <img class="d-block w-100" src="@firstBattery.Brand" alt="@firstBattery.Brand @firstBattery.Capacity Ah">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5><a asp-controller="Battery" asp-action="Details" asp-route-id="@firstBattery.Id">@firstBattery.Brand @firstBattery.Capacity</a> </h5>
+                    <h5><a class="btn btn-primary" asp-controller="Battery" asp-action="Details" asp-route-id="@firstBattery.Id">@firstBattery.Brand @firstBattery.Capacity Ah</a></h5>
 
                 </div>
             </div>
@@ -38,8 +39,8 @@
             <div class="carousel-item ">
                 <img class="d-block w-100" src="@secondBattery.Brand" alt="@secondBattery.Brand @secondBattery.Capacity Ah">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5><a asp-controller="Battery" asp-action="Details" asp-route-id="@secondBattery.Id">@secondBattery.Brand @secondBattery.Capacity</a> </h5>
-
+                    <h5><a class="btn btn-primary" asp-controller="Battery" asp-action="Details" asp-route-id="@secondBattery.Id">@secondBattery.Brand @secondBattery.Capacity Ah</a></h5>
+                     
                 </div>
             </div>
         }
@@ -48,7 +49,7 @@
             <div class="carousel-item ">
                 <img class="d-block w-100" src="@thirdBattery.Brand" alt="@thirdBattery.Brand @thirdBattery.Capacity Ah">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5><a asp-controller="Battery" asp-action="Details" asp-route-id="@thirdBattery.Id">@thirdBattery.Brand @thirdBattery.Capacity</a> </h5>
+                    <h5><a class="btn btn-primary" asp-controller="Battery" asp-action="Details" asp-route-id="@thirdBattery.Id">@thirdBattery.Brand @thirdBattery.Capacity Ah</a></h5>
 
                 </div>
             </div>
@@ -62,4 +63,23 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
+
+<div class="mb-5"></div>
+
+<div class="jumbotron">
+    <div class="row">
+        <h3 class="col-md-6 text-center">
+            @Model.TotalBatteries  Total batteries in this place
+
+        </h3>
+
+        <h3 class="col-md-6 text-center">
+            @Model.TotalUsers Total Users in this place
+
+        </h3>
+
+    </div>
+
+
 </div>
