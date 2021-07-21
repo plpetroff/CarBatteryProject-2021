@@ -89,7 +89,7 @@
 
             this.data.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(nameof(All));
         }
 
         private IEnumerable<BatteryBrandViewModel> GetBatteryBrands()
