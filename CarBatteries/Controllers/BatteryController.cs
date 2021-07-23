@@ -3,9 +3,11 @@
     using CarBatteries.Data;
     using CarBatteries.Data.Models;
     using CarBatteries.Models.Battery;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -54,8 +56,23 @@
         }
 
         [HttpPost]
-        public IActionResult Add(AddBatteryFormModel batteryModel)
+        public IActionResult Add(AddBatteryFormModel batteryModel, IFormFile image)
         {
+            if (image == null || image.Length > 2 * 1024 * 1024)
+            {
+                this.ModelState.AddModelError("Image", "The image is not valid. It is required and it is should be less than 2 MB");
+            }
+
+            var imageInMemory = new MemoryStream();
+            image.CopyTo(imageInMemory);
+            var imageBytes = imageInMemory.ToArray();
+
+            imageInMemory.Close();
+            imageInMemory.Dispose();
+
+
+
+
             if (!this.data.Brands.Any(b => b.Id == batteryModel.BrandId))
             {
                 this.ModelState.AddModelError(nameof(batteryModel.BrandId), "Brand does not exist");
@@ -70,6 +87,7 @@
                 batteryModel.Amperages = this.GetBatteryAmperages();
                 batteryModel.Terminals = this.GetBatteryTerminals();
                 batteryModel.BoxTypes = this.GetBatteryBoxTypes();
+
                 return View(batteryModel);
             }
 
@@ -81,11 +99,12 @@
                 CapacityId = batteryModel.CapacityId,
                 AmperageId = batteryModel.AmperageId,
                 TerminalsId = batteryModel.TerminalsId,
-                BoxTypeId = batteryModel.BoxTypeId
+                BoxTypeId = batteryModel.BoxTypeId,
+                ImageId = batteryModel.ImageId
 
             };
 
-            this.data.Batteries.Add(battery);
+            this.data.Batteries.Add(battery);            
 
             this.data.SaveChanges();
 

@@ -25,6 +25,9 @@ namespace CarBatteries.Data
         public DbSet<Terminals> Terminals { get; init; }
         public DbSet<BoxType> BoxTypes { get; init; }
         public DbSet<BatteryCode> BatteryCodes { get; init; }
+        public DbSet<Image> Images { get; init; }
+
+
 
         //public DbSet<Price> Prices { get; init; }
         //public DbSet<Length> Lengths { get; init; }

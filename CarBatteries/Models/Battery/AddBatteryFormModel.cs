@@ -36,6 +36,12 @@
         public int BoxTypeId { get; set; }
         public IEnumerable<BatteryBoxTypeViewModel> BoxTypes { get; set; }
 
+        public int? ImageId { get; set; }
+        public Image Image { get; set; }
+
+        public int BatteryCodeId { get; set; }
+        public BatteryCode BatteryCode { get; set; }
+
 
         //[Display(Name = "Batteryyyy Brand")]
         //public Brand Brand { get; set; }
@@ -55,7 +61,7 @@
 
 
 
-        //public int BatteryCodeId { get; set; }
+
 
         //public int PriceId { get; set; }
     }

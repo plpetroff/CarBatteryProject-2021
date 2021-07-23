@@ -28,8 +28,11 @@
         public int BoxTypeId { get; set; }
         public BoxType BoxType { get; set; }
 
-        //public int? BatteryCodeId { get; set; }
-        //public BatteryCode BatteryCode { get; set; }
+        public int? ImageId { get; set; }
+        public Image Image { get; set; }
+
+        public int? BatteryCodeId { get; set; }
+        public BatteryCode BatteryCode { get; set; }
 
 
         //public int LengthId { get; set; }
