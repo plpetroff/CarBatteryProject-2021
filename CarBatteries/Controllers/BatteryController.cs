@@ -52,7 +52,10 @@
                 })
                 .ToList();
 
-            return View(batteries);
+            return View(new AllBatteryQueryModel 
+            { 
+                Batteries = batteries
+            });
         }
 
         [HttpPost]

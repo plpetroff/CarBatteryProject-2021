@@ -1,11 +1,25 @@
-﻿@model IEnumerable<BatteryListingViewModel>
+﻿@model AllBatteryQueryModel
 
 @{
     ViewData["Title"] = "All Batteries";
 }
 
+
+    <form method="get">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label asp-for="SearchTerm"></label>
+                <input asp-for="SearchTerm" class="form-control" placeholder="Search something...." />
+            </div>
+
+        </div>
+                  
+    </form>
+
+
+
 <div class="row">
-    @foreach (var battery in Model)
+    @foreach (var battery in Model.Batteries)
     {
         <div class="col-md-4">
             <div class="card mb-4">
