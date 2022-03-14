@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using static DataConstants;
+
     public class Category
     {
         public int Id { get; set; }
